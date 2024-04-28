@@ -4,10 +4,6 @@ const users = await useFetch(
 );
 </script>
 
-<style lang="scss">
-@use '~/assets/scss/main.scss';
-</style>
-
 <template>
   <div>
     <header>
