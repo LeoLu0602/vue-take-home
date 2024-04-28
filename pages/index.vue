@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const users = await useFetch(
+  'https://mocki.io/v1/fdb05063-4e7d-4db0-a7d6-a0e30eebd942'
+);
+</script>
+
+<style lang="scss">
+@use '~/assets/scss/main.scss';
+</style>
+
 <template>
   <div>
     <header>
@@ -8,7 +18,10 @@
         </ul>
       </nav>
     </header>
-    <main>Home Page</main>
+    <main>
+      Home Page
+      <section>{{ users }}</section>
+    </main>
     <footer></footer>
   </div>
 </template>
