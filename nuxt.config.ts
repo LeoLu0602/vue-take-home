@@ -1,9 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  nitro: {
-    firebase: {
-      gen: 2,
-    },
-  },
-});
+  devtools: { enabled: true }
+})
