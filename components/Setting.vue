@@ -17,16 +17,18 @@ const model: ModelRef<unknown, string> = defineModel();
     />
   </section>
 
-  <section class="setting" v-if="type === 'radio'" v-for="label in labels">
-    <label v-bind:for="label">{{
-      label[0].toUpperCase() + label.slice(1)
-    }}</label>
-    <input
-      v-bind:id="label"
-      v-bind:type="type"
-      v-bind:value="label"
-      v-model="model"
-    />
+  <section class="setting" v-if="type === 'radio'">
+    <div v-for="label in labels" class="radio-option">
+      <label v-bind:for="label">{{
+        label[0].toUpperCase() + label.slice(1)
+      }}</label>
+      <input
+        v-bind:id="label"
+        v-bind:type="type"
+        v-bind:value="label"
+        v-model="model"
+      />
+    </div>
   </section>
 
   <section class="setting" v-if="type === 'select'">

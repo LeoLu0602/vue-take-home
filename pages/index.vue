@@ -4,9 +4,16 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router';
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const isActive: boolean = route.fullPath === '/';
+const mode: globalThis.Ref<string> = useMode();
 const { data: results } = await useFetch(
   'https://mocki.io/v1/1638cad5-219e-46f0-88f2-fa406078fc5b '
 );
+
+mode.value = getData('mode') ? getData('mode') : 'light';
+
+useHead({
+  bodyAttrs: { class: mode },
+});
 </script>
 
 <template>
@@ -22,17 +29,18 @@ const { data: results } = await useFetch(
       </nav>
     </header>
     <main>
+      <h1>
+        👋
+        {{ getData('username') ? getData('username') : 'Anonymous User' }}
+      </h1>
       <section>
-        <h1>
-          👋 {{ getData('username') ? getData('username') : 'Anonymous User' }}
-        </h1>
-        <ul class="results" v-for="result in results">
-          <li>
-            {{ result.homeTeam }}
-            {{ result.homeScore }}
+        <ul class="results">
+          <li v-for="{ homeTeam, homeScore, awayScore, awayTeam } in results">
+            {{ homeTeam }}
+            {{ homeScore }}
             -
-            {{ result.awayScore }}
-            {{ result.awayTeam }}
+            {{ awayScore }}
+            {{ awayTeam }}
           </li>
         </ul>
       </section>

@@ -5,6 +5,16 @@
   font-family: sans-serif;
 }
 
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
 nav {
   ul {
     display: flex;
@@ -33,10 +43,10 @@ nav {
     font-size: 1.5rem;
     text-decoration: none;
   }
-}
 
-.active {
-  background-color: #009658;
+  .active {
+    background-color: #009658;
+  }
 }
 
 main {
@@ -56,7 +66,7 @@ main {
   }
 
   .setting {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     input[type='text'] {
       display: block;
@@ -69,8 +79,14 @@ main {
       outline: none;
     }
 
-    input[type='radio'] {
-      margin-left: 1rem;
+    .radio-option {
+      input {
+        margin-left: 1rem;
+      }
+    }
+
+    .radio-option:not(.radio-option:last-child) {
+      margin-bottom: 0.5rem;
     }
 
     select {
@@ -98,7 +114,8 @@ main {
   }
 
   .save-btn {
-    margin-right: 1rem;
+    display: block;
+    margin-bottom: 1rem;
     background-color: #00dc82;
   }
 
@@ -107,6 +124,7 @@ main {
   }
 
   .forget-btn {
+    display: block;
     background-color: red;
   }
 

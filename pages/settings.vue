@@ -5,16 +5,9 @@ import Setting from '../components/Setting.vue';
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const isActive: boolean = route.fullPath === '/settings';
-const username: globalThis.Ref<string> = ref(
-  getData('username') ? getData('username') : ''
-);
-const theme: globalThis.Ref<string> = ref(
-  getData('theme') ? getData('theme') : 'light'
-);
-const favoriteTeam: globalThis.Ref<string> = ref(
-  getData('favoriteTeam') ? getData('favoriteTeam') : ''
-);
-
+const mode = useMode();
+const username: globalThis.Ref<string> = ref(getData('username'));
+const favoriteTeam: globalThis.Ref<string> = ref(getData('favoriteTeam'));
 const TEAMS: string[] = [
   '',
   'Arsenal',
@@ -39,15 +32,19 @@ const TEAMS: string[] = [
   'Wolves',
 ];
 
+useHead({
+  bodyAttrs: { class: mode },
+});
+
 function save() {
   setData('username', username.value);
-  setData('theme', theme.value);
+  setData('mode', mode.value);
   setData('favoriteTeam', favoriteTeam.value);
 }
 
 function forget() {
   setData('username', '');
-  setData('theme', '');
+  setData('mode', '');
   setData('favoriteTeam', '');
 }
 </script>
@@ -66,21 +63,23 @@ function forget() {
     </header>
     <main>
       <h1>Settings</h1>
-      <Setting
-        type="text"
-        label="Username"
-        :value="username"
-        v-model="username"
-      />
-      <Setting type="radio" :labels="['light', 'dark']" v-model="theme" />
-      <Setting
-        type="select"
-        label="Favorite Team"
-        :options="TEAMS"
-        v-model="favoriteTeam"
-      />
-      <button class="save-btn" @click="save">Save</button>
-      <button class="forget-btn" @click="forget">Forget</button>
+      <section>
+        <Setting
+          type="text"
+          label="Username"
+          :value="username"
+          v-model="username"
+        />
+        <Setting type="radio" :labels="['light', 'dark']" v-model="mode" />
+        <Setting
+          type="select"
+          label="Favorite Team"
+          :options="TEAMS"
+          v-model="favoriteTeam"
+        />
+        <button class="save-btn" @click="save">Save</button>
+        <button class="forget-btn" @click="forget">Forget</button>
+      </section>
     </main>
     <footer></footer
   ></ClientOnly>
