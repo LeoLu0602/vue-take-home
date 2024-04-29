@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import nuxtStorage from 'nuxt-storage';
+import nuxtStorageLocalStorage from 'nuxt-storage/local-storage';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
 
-const { getData, setData } = nuxtStorage.localStorage;
+const { getData } = nuxtStorageLocalStorage;
 const route: RouteLocationNormalizedLoaded = useRoute();
 const isActive: boolean = route.fullPath === '/';
 const mode: globalThis.Ref<string> = useMode();
