@@ -43,8 +43,16 @@ main {
   padding: 5rem 1rem;
 
   h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-size: 1.5rem;
+  }
+
+  .results {
+    list-style-type: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
   }
 
   .setting {
