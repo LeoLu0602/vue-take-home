@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-const { getData } = nuxtStorageLocalStorage; // works on prod only
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// const { getData } = nuxtStorageLocalStorage; // works on prod only
 
-// import nuxtStorage from 'nuxt-storage'; // works on dev only
-// const { getData } = nuxtStorage.localStorage; // works on dev only
+import nuxtStorage from 'nuxt-storage'; // works on dev only
+const { getData } = nuxtStorage.localStorage; // works on dev only
 
 import Navbar from '~/components/Navbar.vue';
 

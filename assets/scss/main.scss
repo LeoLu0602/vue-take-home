@@ -148,20 +148,20 @@ main {
       padding-left: 0.2rem;
       width: 300px;
       height: 1.5rem;
-    }
 
-    input[type='text']:focus {
-      outline: none;
+      &:focus {
+        outline: none;
+      }
     }
 
     .radio-option {
       input {
         margin-left: 1rem;
       }
-    }
 
-    .radio-option:not(.radio-option:last-child) {
-      margin-bottom: 0.5rem;
+      &:not(.radio-option:last-child) {
+        margin-bottom: 0.5rem;
+      }
     }
 
     select {
@@ -192,9 +192,9 @@ main {
     display: block;
     margin-bottom: 1rem;
     background-color: $lightGreen;
-  }
 
-  .save-btn:hover {
-    background-color: $darkGreen;
+    &:hover {
+      background-color: $darkGreen;
+    }
   }
 }
