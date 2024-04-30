@@ -63,14 +63,14 @@ function save() {
       <section>
         <Setting
           type="text"
-          label="Username"
+          :labels="['username']"
           :value="username"
           v-model="username"
         />
         <Setting type="radio" :labels="['light', 'dark']" v-model="mode" />
         <Setting
           type="select"
-          label="Favorite Team"
+          :labels="['favorite team']"
           :options="TEAMS"
           v-model="favoriteTeam"
         />
