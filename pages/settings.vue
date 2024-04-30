@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-// import nuxtStorage from 'nuxt-storage'; // works on dev only
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+import nuxtStorage from 'nuxt-storage'; // works on dev only
 import Setting from '../components/Setting.vue';
+import Saved from '../components/Saved.vue';
 
-const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
-// const { getData, setData } = nuxtStorage.localStorage; // works on dev only
+// const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
+const { getData, setData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/settings';
 const mode = useMode();
 const username = ref(getData('username'));
 const favoriteTeam = ref(getData('favoriteTeam'));
+const showSaved = ref(false);
 const TEAMS: string[] = [
   '',
   'Arsenal',
@@ -42,6 +44,10 @@ function save() {
   setData('username', username.value, 365, 'd');
   setData('mode', mode.value, 365, 'd');
   setData('favoriteTeam', favoriteTeam.value, 365, 'd');
+  showSaved.value = true;
+  setTimeout(() => {
+    showSaved.value = false;
+  }, 1000);
 }
 </script>
 
@@ -56,8 +62,10 @@ function save() {
       </ul>
     </nav>
   </header>
+
   <main>
     <h1>Settings</h1>
+
     <section>
       <Setting
         type="text"
@@ -74,6 +82,9 @@ function save() {
       />
       <button class="save-btn" @click="save">Save</button>
     </section>
+
+    <Saved :shown="showSaved" />
   </main>
+
   <footer></footer>
 </template>

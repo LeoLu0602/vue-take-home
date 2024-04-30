@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-// import nuxtStorage from 'nuxt-storage'; // works on dev only
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+import nuxtStorage from 'nuxt-storage'; // works on dev only
 
-const { getData } = nuxtStorageLocalStorage; // works on prod only
-// const { getData } = nuxtStorage.localStorage; // works on dev only
+// const { getData } = nuxtStorageLocalStorage; // works on prod only
+const { getData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/';
 const mode = useMode();
@@ -29,11 +29,17 @@ useHead({
       </ul>
     </nav>
   </header>
+
   <main>
-    <h1>
-      👋
-      {{ getData('username') ? getData('username') : 'Anonymous User' }}
-    </h1>
+    <h1>Premier League Scores</h1>
+
+    <section class="welcome">
+      <div class="hi">👋</div>
+      <div>
+        {{ getData('username') ? getData('username') : '' }}
+      </div>
+    </section>
+
     <section>
       <ul class="results">
         <li v-for="{ homeTeam, homeScore, awayScore, awayTeam } in results">
@@ -46,5 +52,6 @@ useHead({
       </ul>
     </section>
   </main>
+
   <footer></footer>
 </template>
