@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type ModelRef } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps(['type', 'labels', 'value', 'options']);
 const model = defineModel();

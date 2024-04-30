@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only (somehow)
 import nuxtStorage from 'nuxt-storage'; // works on dev only (somehow)
-import type { RouteLocationNormalizedLoaded } from 'vue-router';
 
 // const { getData } = nuxtStorageLocalStorage; // works on prod only (somehow)
 const { getData } = nuxtStorage.localStorage; // works on dev only (somehow)
