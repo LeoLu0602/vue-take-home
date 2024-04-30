@@ -6,11 +6,11 @@ import Setting from '../components/Setting.vue';
 
 // const { getData, setData } = nuxtStorageLocalStorage; // works on prod only (somehow)
 const { getData, setData } = nuxtStorage.localStorage; // works on dev only (somehow)
-const route: RouteLocationNormalizedLoaded = useRoute();
+const route = useRoute();
 const isActive: boolean = route.fullPath === '/settings';
 const mode = useMode();
-const username: globalThis.Ref<string> = ref(getData('username'));
-const favoriteTeam: globalThis.Ref<string> = ref(getData('favoriteTeam'));
+const username = ref(getData('username'));
+const favoriteTeam = ref(getData('favoriteTeam'));
 const TEAMS: string[] = [
   '',
   'Arsenal',

@@ -5,9 +5,9 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router';
 
 // const { getData } = nuxtStorageLocalStorage; // works on prod only (somehow)
 const { getData } = nuxtStorage.localStorage; // works on dev only (somehow)
-const route: RouteLocationNormalizedLoaded = useRoute();
+const route = useRoute();
 const isActive: boolean = route.fullPath === '/';
-const mode: globalThis.Ref<string> = useMode();
+const mode = useMode();
 const { data: results } = await useFetch(
   'https://mocki.io/v1/1638cad5-219e-46f0-88f2-fa406078fc5b '
 );
