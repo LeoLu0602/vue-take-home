@@ -7,11 +7,12 @@ const { getData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/';
 const mode = useMode();
+const favoriteTeam = getData('favoriteTeam') ?? '';
 const { data: results } = await useFetch(
   'https://mocki.io/v1/1638cad5-219e-46f0-88f2-fa406078fc5b '
 );
 
-mode.value = getData('mode') ? getData('mode') : 'light';
+mode.value = getData('mode') ?? 'light';
 
 useHead({
   bodyAttrs: { class: mode },
@@ -35,26 +36,42 @@ useHead({
 
     <section class="welcome">
       <div class="hi">👋</div>
-      <div>
-        {{ getData('username') ? getData('username') : '' }}
-      </div>
+      <ClientOnly>
+        <div>
+          {{ getData('username') ?? 'Anonymous User' }}
+        </div>
+      </ClientOnly>
     </section>
 
     <section>
       <ul class="results">
-        <li v-for="{ homeTeam, homeScore, awayScore, awayTeam } in results">
-          {{ homeTeam }}
-          <span
-            :class="{ win: homeScore > awayScore, loss: homeScore < awayScore }"
-            >{{ homeScore }}</span
-          >
-          -
-          <span
-            :class="{ win: homeScore < awayScore, loss: homeScore > awayScore }"
-            >{{ awayScore }}</span
-          >
-          {{ awayTeam }}
-        </li>
+        <ClientOnly>
+          <li v-for="{ homeTeam, homeScore, awayScore, awayTeam } in results">
+            <span :class="{ 'favorite-team': homeTeam === favoriteTeam }">{{
+              homeTeam
+            }}</span>
+            &nbsp;
+            <span
+              :class="{
+                win: homeScore > awayScore,
+                loss: homeScore < awayScore,
+              }"
+              >{{ homeScore }}</span
+            >
+            &nbsp; - &nbsp;
+            <span
+              :class="{
+                win: homeScore < awayScore,
+                loss: homeScore > awayScore,
+              }"
+              >{{ awayScore }}</span
+            >
+            &nbsp;
+            <span :class="{ 'favorite-team': awayTeam === favoriteTeam }">{{
+              awayTeam
+            }}</span>
+          </li>
+        </ClientOnly>
       </ul>
     </section>
   </main>

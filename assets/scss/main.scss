@@ -102,14 +102,15 @@ main {
 
   .welcome {
     display: flex;
-    margin-bottom: 2rem;
-    gap: 0.5rem;
     align-items: center;
-    font-size: 1.2rem;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    color: rgb(20 184 166);
     font-weight: bold;
+    font-size: 1.2rem;
 
     .hi {
-      animation: 1s wave 1s linear;
+      animation: 0.5s linear 0.5s wave;
     }
   }
 
@@ -118,6 +119,7 @@ main {
 
     li {
       margin-bottom: 1rem;
+      font-weight: bold;
     }
 
     .win {
@@ -126,6 +128,10 @@ main {
 
     .loss {
       color: red;
+    }
+
+    .favorite-team {
+      color: gold;
     }
   }
 
