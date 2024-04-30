@@ -1,10 +1,10 @@
 <script setup lang="ts">
-// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-import nuxtStorage from 'nuxt-storage'; // works on dev only
+import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// import nuxtStorage from 'nuxt-storage'; // works on dev only
 import Setting from '../components/Setting.vue';
 
-// const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
-const { getData, setData } = nuxtStorage.localStorage; // works on dev only
+const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
+// const { getData, setData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/settings';
 const mode = useMode();

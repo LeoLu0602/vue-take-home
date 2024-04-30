@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { getData } from 'nuxt-storage/local-storage';
+import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// import nuxtStorage from 'nuxt-storage'; // works on dev only
 
+const { getData } = nuxtStorageLocalStorage; // works on prod only
+// const { getData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/';
 const mode = useMode();
