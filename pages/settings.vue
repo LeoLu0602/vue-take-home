@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage';
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only (somehow)
+import nuxtStorage from 'nuxt-storage'; // works on dev only (somehow)
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
 import Setting from '../components/Setting.vue';
 
-const { getData, setData } = nuxtStorageLocalStorage;
+// const { getData, setData } = nuxtStorageLocalStorage; // works on prod only (somehow)
+const { getData, setData } = nuxtStorage.localStorage; // works on dev only (somehow)
 const route: RouteLocationNormalizedLoaded = useRoute();
 const isActive: boolean = route.fullPath === '/settings';
 const mode = useMode();
@@ -42,12 +44,6 @@ function save() {
   setData('mode', mode.value);
   setData('favoriteTeam', favoriteTeam.value);
 }
-
-function forget() {
-  setData('username', '');
-  setData('mode', '');
-  setData('favoriteTeam', '');
-}
 </script>
 
 <template>
@@ -79,7 +75,6 @@ function forget() {
           v-model="favoriteTeam"
         />
         <button class="save-btn" @click="save">Save</button>
-        <button class="forget-btn" @click="forget">Forget</button>
       </section>
     </main>
     <footer></footer
