@@ -44,9 +44,15 @@ useHead({
       <ul class="results">
         <li v-for="{ homeTeam, homeScore, awayScore, awayTeam } in results">
           {{ homeTeam }}
-          {{ homeScore }}
+          <span
+            :class="{ win: homeScore > awayScore, loss: homeScore < awayScore }"
+            >{{ homeScore }}</span
+          >
           -
-          {{ awayScore }}
+          <span
+            :class="{ win: homeScore < awayScore, loss: homeScore > awayScore }"
+            >{{ awayScore }}</span
+          >
           {{ awayTeam }}
         </li>
       </ul>
