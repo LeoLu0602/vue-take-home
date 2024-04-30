@@ -16,4 +16,4 @@ This is a very simple sports web app built with Nuxt. It allows users to check P
 
 ### 延伸
 
-由於時間有限，只有完成基本的功能。若要做延伸，我會想加入 RWD 以及一些 CSS 動畫來提昇使用者體驗。
+由於時間有限，只有完成基本的功能。若要做延伸，我會想加入 RWD 以及更多 CSS 動畫來提昇使用者體驗。
