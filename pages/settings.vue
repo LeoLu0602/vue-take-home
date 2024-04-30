@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-// import nuxtStorage from 'nuxt-storage'; // works on dev only
-import Setting from '../components/Setting.vue';
-import Saved from '../components/Saved.vue';
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
 
-const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
-// const { getData, setData } = nuxtStorage.localStorage; // works on dev only
-const route = useRoute();
-const isActive: boolean = route.fullPath === '/settings';
+import nuxtStorage from 'nuxt-storage'; // works on dev only
+const { getData, setData } = nuxtStorage.localStorage; // works on dev only
+
+import Setting from '../components/Setting.vue';
+import Saved from '~/components/Saved.vue';
+import Navbar from '~/components/Navbar.vue';
+
 const mode = useMode();
 const username = ref(getData('username'));
 const favoriteTeam = ref(getData('favoriteTeam'));
@@ -54,14 +55,7 @@ function save() {
 
 <template>
   <header>
-    <nav>
-      <ul>
-        <li><NuxtLink to="/">Home</NuxtLink></li>
-        <li :class="{ active: isActive }">
-          <NuxtLink to="/">Settings</NuxtLink>
-        </li>
-      </ul>
-    </nav>
+    <Navbar />
   </header>
 
   <main>

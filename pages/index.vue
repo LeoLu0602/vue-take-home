@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-// import nuxtStorage from 'nuxt-storage'; // works on dev only
+// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// const { getData } = nuxtStorageLocalStorage; // works on prod only
 
-const { getData } = nuxtStorageLocalStorage; // works on prod only
-// const { getData } = nuxtStorage.localStorage; // works on dev only
-const route = useRoute();
-const isActive: boolean = route.fullPath === '/';
+import nuxtStorage from 'nuxt-storage'; // works on dev only
+const { getData } = nuxtStorage.localStorage; // works on dev only
+
+import Navbar from '~/components/Navbar.vue';
+
 const mode = useMode();
 const favoriteTeam: string = getData('favoriteTeam') ?? '';
 const { data: results } = await useFetch(
@@ -21,14 +22,7 @@ useHead({
 
 <template>
   <header>
-    <nav>
-      <ul>
-        <li :class="{ active: isActive }">
-          <NuxtLink to="/">Home</NuxtLink>
-        </li>
-        <li><NuxtLink to="/settings">Settings</NuxtLink></li>
-      </ul>
-    </nav>
+    <Navbar />
   </header>
 
   <main>
