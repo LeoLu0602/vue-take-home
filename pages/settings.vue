@@ -39,9 +39,9 @@ useHead({
 });
 
 function save() {
-  setData('username', username.value);
-  setData('mode', mode.value);
-  setData('favoriteTeam', favoriteTeam.value);
+  setData('username', username.value, 365, 'd');
+  setData('mode', mode.value, 365, 'd');
+  setData('favoriteTeam', favoriteTeam.value, 365, 'd');
 }
 </script>
 

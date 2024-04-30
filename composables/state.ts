@@ -1,2 +1,1 @@
-export const useMode = (): globalThis.Ref<string> =>
-  useState<string>('mode', () => 'light');
+export const useMode = () => useState<string>('mode', () => 'light');
