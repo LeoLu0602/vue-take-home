@@ -1,13 +1,13 @@
 <script setup lang="ts">
-// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-import nuxtStorage from 'nuxt-storage'; // works on dev only
+import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+// import nuxtStorage from 'nuxt-storage'; // works on dev only
 
-// const { getData } = nuxtStorageLocalStorage; // works on prod only
-const { getData } = nuxtStorage.localStorage; // works on dev only
+const { getData } = nuxtStorageLocalStorage; // works on prod only
+// const { getData } = nuxtStorage.localStorage; // works on dev only
 const route = useRoute();
 const isActive: boolean = route.fullPath === '/';
 const mode = useMode();
-const favoriteTeam = getData('favoriteTeam') ?? '';
+const favoriteTeam: string = getData('favoriteTeam') ?? '';
 const { data: results } = await useFetch(
   'https://mocki.io/v1/1638cad5-219e-46f0-88f2-fa406078fc5b '
 );
