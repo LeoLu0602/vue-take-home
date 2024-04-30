@@ -1,13 +1,13 @@
 <script setup lang="ts">
-// import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
-// const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
+import nuxtStorageLocalStorage from 'nuxt-storage/local-storage'; // works on prod only
+const { getData, setData } = nuxtStorageLocalStorage; // works on prod only
 
-import nuxtStorage from 'nuxt-storage'; // works on dev only
-const { getData, setData } = nuxtStorage.localStorage; // works on dev only
+// import nuxtStorage from 'nuxt-storage'; // works on dev only
+// const { getData, setData } = nuxtStorage.localStorage; // works on dev only
 
-import Setting from '../components/Setting.vue';
-import Saved from '~/components/Saved.vue';
 import Navbar from '~/components/Navbar.vue';
+import Setting from '~/components/Setting.vue';
+import Saved from '~/components/Saved.vue';
 
 const mode = useMode();
 const username = ref(getData('username'));
@@ -36,6 +36,8 @@ const TEAMS: string[] = [
   'West Ham United',
   'Wolves',
 ];
+
+mode.value = getData('mode') ?? 'light';
 
 useHead({
   bodyAttrs: { class: mode },
