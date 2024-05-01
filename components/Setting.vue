@@ -15,31 +15,31 @@ const capitalizedLabels = computed(() =>
 
 <template>
   <section class="setting" v-if="type === 'text'">
-    <label v-bind:for="labels[0]">{{ capitalizedLabels[0] }}</label>
+    <label :for="labels[0]">{{ capitalizedLabels[0] }}</label>
     <input
-      v-bind:id="labels[0]"
-      v-bind:type="type"
-      v-bind:value="value"
+      :id="labels[0]"
+      :type="type"
+      :value="value"
       v-model="model"
     />
   </section>
 
   <section class="setting" v-if="type === 'radio'">
     <div v-for="(label, index) in labels" class="radio-option">
-      <label v-bind:for="label">{{ capitalizedLabels[index] }}</label>
+      <label :for="label">{{ capitalizedLabels[index] }}</label>
       <input
-        v-bind:id="label"
-        v-bind:type="type"
-        v-bind:value="label"
+        :id="label"
+        :type="type"
+        :value="label"
         v-model="model"
       />
     </div>
   </section>
 
   <section class="setting" v-if="type === 'select'">
-    <label v-bind:for="labels[0]">{{ capitalizedLabels[0] }}</label>
-    <select v-bind:id="labels[0]" v-model="model">
-      <option v-for="option in options" v-bind:value="option">
+    <label :for="labels[0]">{{ capitalizedLabels[0] }}</label>
+    <select :id="labels[0]" v-model="model">
+      <option v-for="option in options" :value="option">
         {{ option }}
       </option>
     </select>
